@@ -18,7 +18,7 @@ def alquiler(request):
     inmuebles=Inmueble.objects.filter(operacion=2)
     
     return render(request, "InmobiliariaApp/alquiler.html", {"inmuebles" : inmuebles})
-    
+
 def venta(request):
 
     inmuebles=Inmueble.objects.filter(operacion=1)
