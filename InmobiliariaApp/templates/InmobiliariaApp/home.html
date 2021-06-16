@@ -1,0 +1,63 @@
+{% extends "InmobiliariaApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<br><br>
+<h3 style="text-align: center; color: #4360d6;" id="alquileres">Alquileres</h3>
+
+<div class="grid-container">
+  {% for alquiler in alquileres %}
+  <a href="">
+      <div class="tarjeta">
+          <img src="{{alquiler.imagen.url}}" alt="Avatar" >
+          <div class="tipo">
+            <h4>{{alquiler.categoria}} / Alquiler</h4> 
+          </div>
+          <div class="titulo">  
+            <p>{{alquiler.titulo}}</p> 
+          </div>
+          <div class="direccion">
+            <h4>{{alquiler.direccion}}</h4>
+          </div>
+          <div class="precio">
+            <h3>{{alquiler.precio}}</h3>
+          </div>
+          <div class="metros">
+            <h4>{{alquiler.metros}} m²</h4>
+          </div>            
+      </div>
+  </a>
+  {% endfor %}
+</div>
+
+<h3 style="text-align: center; color: #4360d6;" id="ventas">Ventas</h3>
+
+<div class="grid-container">
+  {% for venta in ventas %}
+  <a href="">
+      <div class="tarjeta">
+          <img src="{{venta.imagen.url}}" alt="Avatar" >
+          <div class="tipo">
+            <h4>{{venta.categoria}} / Venta </h4> 
+          </div>
+          <div class="titulo">  
+            <p>{{venta.titulo}}</p> 
+          </div>
+          <div class="direccion">
+            <h4>{{venta.direccion}}</h4>
+          </div>
+          <div class="precio">
+            <h3>{{venta.precio}}</h3>
+          </div>
+          <div class="metros">
+            <h4>{{venta.metros}} m²</h4>
+          </div>            
+      </div>
+  </a>
+  {% endfor %}
+</div>
+
+
+{% endblock %}

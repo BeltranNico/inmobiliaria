@@ -1,0 +1,35 @@
+{% extends "InmobiliariaApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- ESTA PLANTILLA NO ES NECESARIA -->
+
+<div class='container'>
+
+<div class="main">
+  <h1>Alquileres</h1>
+  {% for inmueble in inmuebles %}
+  <ul class="cards">
+    <li class="cards_item">
+      <div class="card">
+        <div class="card_image"><img src="{{inmueble.imagen.url}}"></div>
+        <div class="card_content">
+          <h2 class="card_title">{{inmueble.direccion}}</h2>
+          <p class="card_text">{{inmueble.categoria}}</p>
+          <p class="card_text">{{inmueble.ambiente}}</p>
+          <p class="card_text">{{inmueble.precio}}</p>
+          <button class="btn card_btn">Read More</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+  {% endfor %}
+
+</div>
+
+</div>
+
+
+{% endblock %}

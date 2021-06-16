@@ -1,0 +1,32 @@
+{% extends "InmobiliariaApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+{% for inmueble in inmuebles %}
+
+<!-- ESTA PLANTILLA NO ES NECESARIA -->
+
+
+<section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-5 rounded"  src="{{inmueble.imagen.url}}" alt="">       
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            <span class="section-heading-lower">{{inmueble.direccion}}</span>
+            <span class="section-heading-upper">{{inmueble.categoria}}</span>
+            <span class="section-heading-upper">{{inmueble.ambiente}}</span>
+            <span class="section-heading-upper">{{inmueble.precio}}</span>
+          </h2>
+          
+         
+        </div>
+      </div>
+    </div>
+</section>
+
+{% endfor %}
+
+
+{% endblock %}
