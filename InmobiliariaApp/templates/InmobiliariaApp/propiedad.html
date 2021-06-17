@@ -1,0 +1,16 @@
+{% extends "InmobiliariaApp/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<br><br><br>
+
+<img src="{{inmuebles.imagen.url}}" alt="Avatar" >
+    <h1 style="color: black;">{{inmuebles.categoria}}</h1>
+    <h1>{{inmuebles.id}}</h1>
+    <h1>{{inmuebles.titulo}}</h1>
+
+    
+
+{% endblock %}

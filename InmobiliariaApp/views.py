@@ -25,3 +25,8 @@ def venta(request):
     
     return render(request, "InmobiliariaApp/venta.html", {"inmuebles" : inmuebles})
 
+def propiedad(request, propiedad_id):
+    
+    inmuebles=Inmueble.objects.get(id=propiedad_id)
+
+    return render(request, "InmobiliariaApp/propiedad.html", {"inmuebles": inmuebles})
