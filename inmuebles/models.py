@@ -1,3 +1,4 @@
+#from _typeshed import Self
 from django.db import models
 
 # Create your models here.
@@ -51,6 +52,7 @@ class Ciudad(models.Model):
         return self.nombre
 
 
+
 class Inmueble(models.Model):
     direccion=models.CharField(max_length=50)
     titulo=models.CharField(max_length=140, null=True, blank=True)
@@ -64,16 +66,6 @@ class Inmueble(models.Model):
     caracteristicas=models.TextField(null=True, blank=True)
     requisitos=models.TextField(null=True, blank=True)
     imagen=models.ImageField(upload_to='inmueble')
-    imagen1=models.ImageField(upload_to='inmueble', null=True, blank=True)
-    imagen2=models.ImageField(upload_to='inmueble', null=True, blank=True)
-    imagen3=models.ImageField(upload_to='inmueble', null=True, blank=True)
-    imagen4=models.ImageField(upload_to='inmueble', null=True, blank=True)
-    imagen5=models.ImageField(upload_to='inmueble', null=True, blank=True)
-    imagen6=models.ImageField(upload_to='inmueble', null=True, blank=True)
-    imagen7=models.ImageField(upload_to='inmueble', null=True, blank=True)
-    imagen8=models.ImageField(upload_to='inmueble', null=True, blank=True)
-    imagen9=models.ImageField(upload_to='inmueble', null=True, blank=True)
-    destacado=models.BooleanField(default=False)
     created=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now_add=True)
 
@@ -86,4 +78,16 @@ class Inmueble(models.Model):
     def __str__(self):
         return self.direccion
 
-    
+class Imagenes(models.Model):
+    inmueble=models.ForeignKey(Inmueble, on_delete=models.CASCADE)
+    direccion=models.CharField(max_length=50, default="Referencia")
+    imagen=models.ImageField(upload_to='inmueble')
+    created=models.DateTimeField(auto_now_add=True)
+    updated=models.DateTimeField(auto_now_add=True)
+
+    class Meta: 
+        verbose_name='imagen'
+        verbose_name_plural='imagenes'
+
+    def __str__(self):
+        return self.direccion

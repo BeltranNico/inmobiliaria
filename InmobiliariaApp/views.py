@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from inmuebles.models import Inmueble, Operacion
+from inmuebles.models import Inmueble, Operacion, Imagenes
 
 
 
@@ -28,5 +28,7 @@ def venta(request):
 def propiedad(request, propiedad_id):
     
     inmuebles=Inmueble.objects.get(id=propiedad_id)
+    imagenes=Imagenes.objects.filter(inmueble_id=propiedad_id)
+    
 
-    return render(request, "InmobiliariaApp/propiedad.html", {"inmuebles": inmuebles})
+    return render(request, "InmobiliariaApp/propiedad.html", {"inmuebles": inmuebles, "imagenes": imagenes})

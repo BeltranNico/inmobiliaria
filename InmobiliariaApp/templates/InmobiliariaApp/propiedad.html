@@ -6,8 +6,13 @@
 
 <br><br><br>
 
-<img src="{{inmuebles.imagen.url}}" alt="Avatar" >
-    <h1 style="color: black;">{{inmuebles.categoria}}</h1>
+
+{% for img in imagenes %}
+<img width="150px" height="150px" src="{{img.imagen.url}}" alt="No agarra la fotoooo" >
+<br><br>
+{% endfor %}
+
+    <h1>{{inmuebles.categoria}}</h1>
     <h1>{{inmuebles.id}}</h1>
     <h1>{{inmuebles.titulo}}</h1>
     <h3>{{inmuebles.precio}}</h3>
