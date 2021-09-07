@@ -3,30 +3,85 @@
 {% load static %}
 
 {% block content %}
-{% for inmueble in inmuebles %}
 
-<!-- ESTA PLANTILLA NO ES NECESARIA -->
-<!-- fhjdhjdfkhjdfkhjdkhjdkhdk -->
+<link href="{% static 'InmobiliariaApp/css/style-prop.css' %}" rel="stylesheet">
+ 
 
-<section class="page-section clearfix">
-    <div class="container">
-      <div class="intro">
-        <img class="intro-img img-fluid mb-3 mb-lg-5 rounded"  src="{{inmueble.imagen.url}}" alt="">       
-        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-          <h2 class="section-heading mb-4" >
-            <span class="section-heading-lower">{{inmueble.direccion}}</span>
-            <span class="section-heading-upper">{{inmueble.categoria}}</span>
-            <span class="section-heading-upper">{{inmueble.ambiente}}</span>
-            <span class="section-heading-upper">{{inmueble.precio}}</span>
-          </h2>
-          
-         
-        </div>
-      </div>
+<div class="grid-propiedad container" >
+
+    <div class="container descripcion" >
+        <h2>Descripción</h2>
+        <h5>Dirección </h5> <p>{{inmuebles.direccion}}</p>
+        <h5>Ciudad</h5> <p>{{inmuebles.ciudad}}</p>
+        <h5>Tipo de inmueble</h5> <p>{{inmuebles.categoria}}</p>
+        <h5>Ambientes</h5> <p>{{inmuebles.ambiente}}</p>
+        <h5>Precio</h5><p>{{inmuebles.precio}}</p>
+        <h5>Tamaño</h5><p>{{inmuebles.metros}}m²</p>
+        <h2>Características</h2>
+        <p class="caracteristicas" >{{inmuebles.caracteristicas}}</p>
+        
     </div>
-</section>
 
-{% endfor %}
 
+    <div class="container grid-fotos" >
+        {% for img in imagenes %}
+
+        <div class="mySlides">
+            <img class="mainFoto" src="{{img.imagen.url}}" >
+        </div>
+
+        {% endfor %}
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        <!-- Thumbnail images -->
+         <div class="row container otrasFotos ">
+            {% for img in imagenes %}
+            <div class="column">
+                <img class="demo cursor" src="{{img.imagen.url}}" style="width:100%"
+                 onclick="currentSlide({{forloop.counter}})" alt="{{inmuebles.titulo}}">           
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    
+</div>
+
+<br><br>
+
+<script>
+    var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  //var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  //captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
 
 {% endblock %}

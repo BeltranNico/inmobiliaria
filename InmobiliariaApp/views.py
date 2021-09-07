@@ -13,17 +13,19 @@ def home(request):
   
     return render(request, "InmobiliariaApp/home.html", {"ventas" : ventas, "alquileres": alquileres})
 
-def alquiler(request):
+def alquiler(request, propiedad_id):
 
-    inmuebles=Inmueble.objects.filter(operacion=2)
+    inmuebles=Inmueble.objects.get(id=propiedad_id)
+    imagenes=Imagenes.objects.filter(inmueble_id=propiedad_id)
     
-    return render(request, "InmobiliariaApp/alquiler.html", {"inmuebles" : inmuebles})
+    return render(request, "InmobiliariaApp/alquiler.html", {"inmuebles": inmuebles, "imagenes": imagenes})
 
-def venta(request):
+def venta(request, propiedad_id):
 
-    inmuebles=Inmueble.objects.filter(operacion=1)
+    inmuebles=Inmueble.objects.get(id=propiedad_id)
+    imagenes=Imagenes.objects.filter(inmueble_id=propiedad_id)
     
-    return render(request, "InmobiliariaApp/venta.html", {"inmuebles" : inmuebles})
+    return render(request, "InmobiliariaApp/venta.html", {"inmuebles": inmuebles, "imagenes": imagenes})
 
 def propiedad(request, propiedad_id):
     
