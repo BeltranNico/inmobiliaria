@@ -25,7 +25,7 @@ SECRET_KEY = '=jy-n541ve=(7#fx3)e1--x@(^ztdiaejky^imo+@ovngzon-&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'alassiamicheletti.com.ar', '147.182.193.209', ]
+ALLOWED_HOSTS = ['143.244.178.51' ]
 
 
 # Application definition
